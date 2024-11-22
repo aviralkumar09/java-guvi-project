@@ -1,0 +1,92 @@
+import java.util.Scanner;
+import java.util.Random;
+
+class Character {
+    String name;
+    int health;
+    int attackPower;
+    int defense;
+    int mana;
+
+    public Character(String name, int health, int attackPower, int defense, int mana) {
+        this.name = name;
+        this.health = health;
+        this.attackPower = attackPower;
+        this.defense = defense;
+        this.mana = mana;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    public void attack(Character opponent) {
+        Random random = new Random();
+        int damage = (attackPower - opponent.defense) + random.nextInt(10);
+        damage = Math.max(damage, 0); // Ensure damage is not negative
+        opponent.health -= damage;
+        System.out.println(name + " attacks " + opponent.name + " for " + damage + " damage!");
+    }
+
+    public void specialAttack(Character opponent) {
+        if (mana >= 20) {
+            Random random = new Random();
+            int damage = (attackPower * 2 - opponent.defense) + random.nextInt(20);
+            damage = Math.max(damage, 0);
+            opponent.health -= damage;
+            mana -= 20;
+            System.out.println(name + " uses a special attack on " + opponent.name + " for " + damage + " damage!");
+        } else {
+            System.out.println(name + " doesn't have enough mana for a special attack!");
+        }
+    }
+}
+
+public class BattleBound {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        System.out.println("Welcome to Battle Bound: The Rise of Darkness!");
+
+        // Initialize characters
+        Character hero = new Character("Hero", 100, 30, 10, 50);
+        Character villain = new Character("Dark Overlord", 120, 25, 15, 30);
+
+        // Game loop
+        while (hero.isAlive() && villain.isAlive()) {
+            System.out.println("\nHero's Health: " + hero.health + ", Mana: " + hero.mana);
+            System.out.println("Villain's Health: " + villain.health + ", Mana: " + villain.mana);
+
+            // Player's turn
+            System.out.println("\nChoose your action:");
+            System.out.println("1. Attack");
+            System.out.println("2. Special Attack");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1 -> hero.attack(villain);
+                case 2 -> hero.specialAttack(villain);
+                default -> System.out.println("Invalid choice! You lose your turn.");
+            }
+
+            if (!villain.isAlive()) {
+                System.out.println("\nThe Hero has defeated the Dark Overlord!");
+                break;
+            }
+
+            // Villain's turn (random action)
+            if (random.nextBoolean()) {
+                villain.attack(hero);
+            } else {
+                villain.specialAttack(hero);
+            }
+
+            if (!hero.isAlive()) {
+                System.out.println("\nThe Dark Overlord has defeated the Hero. Darkness rises!");
+            }
+        }
+
+        scanner.close();
+    }
+}
