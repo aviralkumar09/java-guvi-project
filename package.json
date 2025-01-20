@@ -1,15 +1,13 @@
 {
-  "name": "battle-royale-game",
   "private": true,
-  "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "slidev",
+    "build": "slidev build",
+    "export": "slidev export"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "vite": "^5.0.0"
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest"
   }
 }

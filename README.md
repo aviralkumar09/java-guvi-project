@@ -1,40 +1,13 @@
-# Battle Royale Game Interface
+# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
 
-A web-based battle royale game interface with player status monitoring and game controls.
+[Edit on StackBlitz ⚡️](https://sli.dev/new)
 
-## Features
+To start the slide show:
 
-- Real-time health and shield monitoring
-- Ammunition management system
-- Kill counter and players alive tracker
-- Interactive game controls (Attack, Heal, Reload)
-- Player registration with form validation
-- Responsive design for all devices
-- Dynamic UI updates
-- Simulated combat system
+- `npm install`
+- `npm run dev`
+- visit http://localhost:3030
 
-## Project Structure
+Edit the [slides.md](./slides.md) to see the changes.
 
-- `index.html` - Main game interface and player registration
-- `styles.css` - Game styling and responsive design
-- `script.js` - Game logic and form validation
-
-## How to Play
-
-1. Register with your username and email
-2. Use the control buttons to:
-   - Attack: Shoot at enemies (requires ammo)
-   - Heal: Restore health (up to 100)
-   - Reload: Replenish ammunition
-3. Monitor your status:
-   - Health: Your remaining health points
-   - Shield: Additional protection
-   - Ammo: Available ammunition
-   - Kills: Number of eliminated players
-
-## Testing
-
-- Verify form validation
-- Test responsive design on different devices
-- Check game mechanics and controls
-- Validate status updates and animations
+Learn more about Slidev on [documentations](https://sli.dev/).
